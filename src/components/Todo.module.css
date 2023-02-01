@@ -3,10 +3,15 @@
     margin-top: 8px;
     padding: 16px 24px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     border-radius: 8px;
     background-color: white;
     box-shadow: 0px 1.6px 3.6px 0px var(--bg-shadow);
+}
+.taskGroup {
+    display: flex;
+    align-items: center;
 }
 .checkBoxGroup {
     position: relative;
@@ -22,25 +27,36 @@
 .checkBoxGroup:hover .unchecked {
     display: block;
 }
-
+.textGroup {
+    width: 100%;
+    /* background-color: rgb(15, 160, 160); */
+}
 .task {
     padding: 0 16px;
-    flex-grow: 1;
-    line-height: 1.4;
     color: var(--font-color-primary);
 }
 .taskDone {
     padding: 0 16px;
-    flex-grow: 1;
-    line-height: 1.4;
     color: var(--font-color-primary);
     text-decoration: line-through;
 }
-.taskInputInactive {
+.inputInactive {
     position: absolute;
     top: 0;
     left: 0;
     display: none;
+}
+.inputActive {
+    display: inline-block;
+    padding: 0 16px;
+    line-height: 1.4;
+    color: var(--font-color-primary);
+    background-color: var(--bg-hover);
+}
+.inputActive:focus {
+    /* input 가로 값도 손봐야함 */
+    width: 300%;
+    background-color: pink;
 }
 
 .btnGroup {
