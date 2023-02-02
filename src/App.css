@@ -33,6 +33,7 @@ ol, ul {
 
 /* App.js */
 header {
+  position: fixed;
   padding: 10px 20px;
   width: 100%;
   height: 48px;
@@ -43,18 +44,10 @@ header {
 }
 
 .main-container { 
-  display: flex
-}
-
-aside {
-  /* 임시 너비 조정 해제 필요 */
-  height: calc(100vh - 48px);
-  /* flex-basis: 280px;  */
-  flex-basis: 20px; 
-  background-color: gold;
+  display: flex;
+  padding-top: 48px; 
 }
 
 main {
   flex: 1;
-  height: calc(100vh - 48px);
 }

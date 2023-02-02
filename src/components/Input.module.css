@@ -1,0 +1,30 @@
+.container {
+    margin: 0 24px;
+    padding: 16px 24px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0px 1.6px 3.6px 0px var(--bg-shadow);
+}
+
+input {
+    padding: 0 12px;
+    flex-grow: 1;
+    color: var(--font-color-primary);
+}
+input::placeholder {
+    color: var(--main-blue);
+    font-weight: 600;
+}
+
+.addBtn {
+    width: 40px;
+    height: 30px;
+    color: var(--main-blue);
+    background-color: #fff;
+    font-weight: 500;
+    border: solid 1px rgb(225, 223, 221);
+    cursor: pointer;
+}

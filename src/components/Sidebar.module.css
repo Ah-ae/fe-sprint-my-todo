@@ -1,0 +1,7 @@
+nav {
+    /* 임시 너비 조정 해제 필요 */
+    height: calc(100vh - 48px);
+    flex-basis: 280px; 
+    /* flex-basis: 20px;  */
+    background-color: gold;
+}

@@ -15,7 +15,6 @@
 }
 .checkBoxGroup {
     position: relative;
-    color: var(--main-blue);
     cursor: pointer;
 }
 .unchecked {
@@ -30,6 +29,9 @@
 .textGroup {
     width: 100%;
     /* background-color: rgb(15, 160, 160); */
+}
+.textGroup:hover {
+    background-color: var(--bg-hover);
 }
 .task {
     padding: 0 16px;
@@ -51,12 +53,14 @@
     padding: 0 16px;
     line-height: 1.4;
     color: var(--font-color-primary);
-    background-color: var(--bg-hover);
 }
 .inputActive:focus {
     /* input 가로 값도 손봐야함 */
-    width: 300%;
-    background-color: pink;
+    width: 360%;
+    background-color: inherit;
+}
+.inputActive:focus:hover {
+    background-color: inherit;
 }
 
 .btnGroup {
@@ -66,6 +70,20 @@
 }
 .btnGroup img {
     cursor: pointer;
+}
+
+.starGroup {
+    position: relative;
+    cursor: pointer;
+}
+.filledStar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+.starGroup:hover .filledStar {
+    display: block
 }
 
 .container:hover {

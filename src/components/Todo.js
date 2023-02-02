@@ -4,6 +4,7 @@ import checkBox from "../images/circle.svg";
 import unchecked from "../images/check-circle.svg";
 import checked from "../images/check-circle-fill.svg";
 import star from "../images/star.svg";
+import filledStar from "../images/star-fill.svg";
 import edit from "../images/edit.svg";
 import trash from "../images/delete.svg";
 
@@ -35,7 +36,6 @@ export default function Todo({ todo, todos, setTodos }) {
     pEl.current.style.display = "none";
     inputEl.current.style.display = "inline-block";
     setInputValue(text);
-    // ! input foucs 안 먹히고 있음
     inputEl.current.focus();
   };
   const handleInputKeyUp = (e) => {
@@ -55,6 +55,16 @@ export default function Todo({ todo, todos, setTodos }) {
     setInputValue(e.target.value);
   };
 
+  const handleImportance = (e) => {
+    const target = todos.find((todo) => todo.id === id);
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === target.id) {
+        target.importance = !target.importance;
+        return target;
+      } else return todo;
+    });
+    setTodos(updatedTodos);
+  };
   return (
     <>
       <li className={styles.container}>
@@ -63,8 +73,13 @@ export default function Todo({ todo, todos, setTodos }) {
             <img
               className={styles.circle}
               src={done ? checked : checkBox}
+              alt="checkbox icon"
             ></img>
-            <img className={styles.unchecked} src={unchecked}></img>
+            <img
+              className={styles.unchecked}
+              src={unchecked}
+              alt="checkbox icon"
+            ></img>
           </div>
           <div className={styles.textGroup}>
             <p
@@ -88,21 +103,15 @@ export default function Todo({ todo, todos, setTodos }) {
           </div>
         </div>
         <div className={styles.btnGroup}>
-          <img src={star}></img>
-          <img src={edit} onClick={editTodo}></img>
-          <img src={trash} onClick={deleteTodo}></img>
+          <img
+            className={styles.starIcon}
+            src={importance ? `${filledStar}` : `${star}`}
+            onClick={handleImportance}
+          ></img>
+          <img src={edit} onClick={editTodo} alt="edit icon"></img>
+          <img src={trash} onClick={deleteTodo} alt="delete icon"></img>
         </div>
       </li>
-      {/* 더미 html */}
-      {/* <li className={styles.container}>
-        <img className={styles.checkBox} src={checkBox}></img>
-        <p className={styles.task}>할 일</p>
-        <div className={styles.btnGroup}>
-          <img src={star}></img>
-          <img className={styles.edit} src={edit}></img>
-          <img className={styles.delete} src={trash}></img>
-        </div>
-      </li> */}
     </>
   );
 }
