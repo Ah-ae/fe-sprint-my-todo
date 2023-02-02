@@ -9,7 +9,7 @@ import edit from "../images/edit.svg";
 import trash from "../images/delete.svg";
 
 export default function Todo({ todo, todos, setTodos }) {
-  const { id, text, done, importance } = todo;
+  const { id, text, done, important } = todo;
   const [isEditing, setIsEditing] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const pEl = useRef(null);
@@ -55,11 +55,11 @@ export default function Todo({ todo, todos, setTodos }) {
     setInputValue(e.target.value);
   };
 
-  const handleImportance = (e) => {
+  const handleImportant = (e) => {
     const target = todos.find((todo) => todo.id === id);
     const updatedTodos = todos.map((todo) => {
       if (todo.id === target.id) {
-        target.importance = !target.importance;
+        target.important = !target.important;
         return target;
       } else return todo;
     });
@@ -105,8 +105,8 @@ export default function Todo({ todo, todos, setTodos }) {
         <div className={styles.btnGroup}>
           <img
             className={styles.starIcon}
-            src={importance ? `${filledStar}` : `${star}`}
-            onClick={handleImportance}
+            src={important ? `${filledStar}` : `${star}`}
+            onClick={handleImportant}
           ></img>
           <img src={edit} onClick={editTodo} alt="edit icon"></img>
           <img src={trash} onClick={deleteTodo} alt="delete icon"></img>

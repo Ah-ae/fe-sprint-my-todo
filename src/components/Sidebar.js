@@ -1,17 +1,21 @@
+import { Link } from "react-router-dom";
 import styles from "./Sidebar.module.css";
-import star from "../images/star.svg";
+import { BsStar } from "react-icons/bs";
+import { RxHamburgerMenu } from "react-icons/rx";
 
-export default function Sidebar() {
+export default function Sidebar({ todos }) {
+  const count = todos.filter((todo) => todo.important === true);
   return (
     <nav>
-      <ul>
-        <li>
-          <img src={star} alt="star icon"></img>
-          <span>중요</span>
-          <span>1</span>
-        </li>
-        <li>Today</li>
-      </ul>
+      <Link to="/important" className={styles.item}>
+        <BsStar />
+        <span className={styles.title}>중요</span>
+        <span className={styles.count}>{count.length}</span>
+      </Link>
+      <Link to="/" className={styles.item}>
+        <RxHamburgerMenu />
+        <span className={styles.title}>Today</span>
+      </Link>
     </nav>
   );
 }

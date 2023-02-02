@@ -1,11 +1,11 @@
 /* reset */
 * {
   box-sizing: border-box;
-}
-
-body, p {
   margin: 0;
   padding: 0;
+}
+
+body {
   font-size: 14px;
 }
 
@@ -19,8 +19,18 @@ input:focus {
   outline: 0;
 }
 
-ol, ul {
+ul {
 	list-style: none;
+}
+
+a {
+  color: #292827;
+  text-decoration: none;
+  outline: none
+}
+a:hover, a:active {
+  color:#292827;
+  text-decoration: none;
 }
 
 /* color palette */

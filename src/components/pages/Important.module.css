@@ -1,6 +1,4 @@
 main {
-    /* display: flex;
-    flex-direction: column; */
     background-color: rgb(250, 249, 248)
 }
 
@@ -16,11 +14,14 @@ main {
 }
 .hamburgerBtn {
     margin-right: 12px;
-    fill: var(--main-blue);
     transform: scale(1.5);
 }
 
 .contentContainer {
     display: flex;
     flex-direction: column;
+}
+.todosContainer {
+    margin: 0 24px;
+    padding: 4px 0 24px 0;
 }

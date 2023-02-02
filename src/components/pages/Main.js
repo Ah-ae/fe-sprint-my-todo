@@ -1,12 +1,8 @@
-import { useState } from "react";
-import Input from "./Input";
-import Todos from "./Todos";
+import Input from "../Input";
+import Todos from "../Todos";
 import styles from "./Main.module.css";
-import { data } from "../data/data.js";
 
-export default function Main() {
-  const [todos, setTodos] = useState(data.todos);
-
+export default function Main({ todos, setTodos }) {
   return (
     <main>
       <div className={styles.titleContainer}>
