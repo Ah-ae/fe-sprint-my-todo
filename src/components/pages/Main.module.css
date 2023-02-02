@@ -1,0 +1,23 @@
+main {
+    background-color: rgb(250, 249, 248)
+}
+
+.titleContainer {
+    margin: 16px 24px;
+    padding-left: 24px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    font-size: 1.16rem;
+    font-weight: 600;
+    color: var(--main-blue);
+}
+.hamburgerBtn {
+    margin-right: 12px;
+    transform: scale(1.5);
+}
+
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+}
