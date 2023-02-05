@@ -14,10 +14,12 @@ export default function Todo({ todo, todos, setTodos }) {
   const [inputValue, setInputValue] = useState("");
   const pEl = useRef(null);
   const inputEl = useRef(null);
+  const { REACT_APP_SERVER_URL: SERVER_URL } = process.env;
 
   const deleteTodo = () => {
-    const updatedTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(updatedTodos);
+    // const updatedTodos = todos.filter((todo) => todo.id !== id);
+    // setTodos(updatedTodos);
+    // fetch(SERVER_URL, {})
   };
 
   const taskDone = () => {

@@ -1,0 +1,52 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "text": "Styled Components로 전반적인 리팩토링",
+      "done": false,
+      "important": false
+    },
+    {
+      "id": 2,
+      "text": "수정/삭제 버튼 더 나은 UI 방안 찾기: 우클릭 -> 삭제버튼 제공?",
+      "done": false,
+      "important": false
+    },
+    {
+      "id": 3,
+      "text": "Edit 버튼 유무: 있는게 낫나 없는게 낫나",
+      "done": false,
+      "important": false
+    },
+    {
+      "id": 4,
+      "text": "json 서버 적용",
+      "done": false,
+      "important": true
+    },
+    {
+      "id": 5,
+      "text": "중요 페이지에서 작업 추가 안 먹히는 것 해결",
+      "done": false,
+      "important": true
+    },
+    {
+      "id": 6,
+      "text": "중요 페이지에서 추가한 데이터의 important 값 true 로 어떻게 주지?",
+      "done": false,
+      "important": true
+    },
+    {
+      "id": 7,
+      "text": "사이드바 미디어쿼리 + 현재 선택한 페이지 색상 다르게 처리",
+      "done": true,
+      "important": false
+    },
+    {
+      "id": 8,
+      "text": "삭제 버튼 누르면 모달 띄워서 한 번 더 물어보기",
+      "done": false,
+      "important": true
+    }
+  ]
+}

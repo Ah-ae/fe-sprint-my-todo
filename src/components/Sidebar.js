@@ -5,10 +5,12 @@ import { BsStar } from "react-icons/bs";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 const Nav = styled.nav`
-  /* 반응형 f.basis 값 200으로 조정 + 가로선 width 160px로 */
   height: calc(100vh - 48px);
   flex-basis: 280px;
   text-align: center;
+  @media screen and (max-width: 720px) {
+    flex-basis: 200px;
+  }
 
   & > .divider {
     margin: 12px 0;
@@ -34,12 +36,6 @@ const StyledLink = styled(Link)`
   & > span:nth-of-type(2) {
     margin-left: auto;
   }
-  /* &:first-child {
-    margin-bottom: 12px;
-  }
-  &:nth-child(2) {
-    margin-top: 12px;
-  } */
 `;
 
 export default function Sidebar({ todos }) {
@@ -57,6 +53,7 @@ export default function Sidebar({ todos }) {
       <StyledLink to="/" path={path}>
         <RxHamburgerMenu />
         <span>Today</span>
+        <span>{todos.length}</span>
       </StyledLink>
     </Nav>
   );

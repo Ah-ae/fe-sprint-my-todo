@@ -1,14 +1,27 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import axios from "axios";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Main from "./components/pages/Main";
 import Important from "./components/pages/Important";
-import { data } from "./data/data";
 
 function App() {
-  const [todos, setTodos] = useState(data.todos);
+  const { REACT_APP_SERVER_URL: SERVER_URL } = process.env;
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        const res = await axios.get(SERVER_URL);
+        setTodos(res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getData();
+  }, []);
 
   return (
     <BrowserRouter className="container">
