@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { v4 as uuid } from "uuid";
+import axios from "axios";
 import styles from "./Input.module.css";
 import plus from "../images/plus.svg";
 
-export default function Input({ todos, setTodos }) {
+export default function Input({ todos, setTodos, important }) {
   const [input, setInput] = useState("");
+  const { REACT_APP_SERVER_URL: SERVER_URL } = process.env;
 
   const handleInput = (e) => {
     setInput(e.target.value);
@@ -13,14 +14,12 @@ export default function Input({ todos, setTodos }) {
     if (input === "") return;
 
     const newTodo = {
-      id: uuid(),
       text: input,
       done: false,
-      importance: false,
+      important,
     };
-    console.log(newTodo.id);
-    setTodos([...todos, newTodo]);
-    setInput("");
+    axios.post(SERVER_URL, newTodo);
+    window.location.reload();
   };
 
   return (

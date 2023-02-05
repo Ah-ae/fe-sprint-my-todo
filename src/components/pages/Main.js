@@ -22,7 +22,7 @@ export default function Main({ todos, setTodos }) {
         <span>Today</span>
       </div>
       <div className={styles.contentContainer}>
-        <Input todos={todos} setTodos={setTodos} />
+        <Input todos={todos} setTodos={setTodos} important={false} />
         <Todos todos={todos} setTodos={setTodos} />
       </div>
     </main>

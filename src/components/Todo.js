@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import axios from "axios";
 import styles from "./Todo.module.css";
 import checkBox from "../images/circle.svg";
 import unchecked from "../images/check-circle.svg";
@@ -16,12 +17,6 @@ export default function Todo({ todo, todos, setTodos }) {
   const inputEl = useRef(null);
   const { REACT_APP_SERVER_URL: SERVER_URL } = process.env;
 
-  const deleteTodo = () => {
-    // const updatedTodos = todos.filter((todo) => todo.id !== id);
-    // setTodos(updatedTodos);
-    // fetch(SERVER_URL, {})
-  };
-
   const taskDone = () => {
     const target = todos.find((todo) => todo.id === id);
     const updatedTodos = todos.map((todo) => {
@@ -31,6 +26,11 @@ export default function Todo({ todo, todos, setTodos }) {
       } else return todo;
     });
     setTodos(updatedTodos);
+  };
+
+  const deleteTodo = () => {
+    axios.delete(`${SERVER_URL}/${id}`);
+    window.location.reload();
   };
 
   const editTodo = () => {
