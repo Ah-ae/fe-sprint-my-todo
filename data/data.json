@@ -47,6 +47,12 @@
       "text": "삭제 버튼 누르면 모달 띄워서 한 번 더 물어보기",
       "done": false,
       "important": true
+    },
+    {
+      "text": "inputValue 변수명 변경: 반응 순서가 조금 이상 계속 그런거 같은데",
+      "done": false,
+      "important": false,
+      "id": 9
     }
   ]
 }

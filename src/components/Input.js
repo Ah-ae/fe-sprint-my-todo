@@ -4,17 +4,17 @@ import styles from "./Input.module.css";
 import plus from "../images/plus.svg";
 
 export default function Input({ todos, setTodos, important }) {
-  const [input, setInput] = useState("");
+  const [inputValue, setInputValue] = useState("");
   const { REACT_APP_SERVER_URL: SERVER_URL } = process.env;
 
   const handleInput = (e) => {
-    setInput(e.target.value);
+    setInputValue(e.target.value);
   };
-  const addTodo = () => {
-    if (input === "") return;
 
+  const addTodo = () => {
+    if (inputValue === "") return;
     const newTodo = {
-      text: input,
+      text: inputValue,
       done: false,
       important,
     };
@@ -28,7 +28,7 @@ export default function Input({ todos, setTodos, important }) {
       <input
         type="text"
         placeholder="작업 추가"
-        value={input}
+        value={inputValue}
         onChange={handleInput}
         onKeyUp={(e) => {
           if (e.key === "Enter") addTodo();

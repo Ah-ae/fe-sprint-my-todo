@@ -24,7 +24,7 @@ export default function Important({ todos, setTodos }) {
         <span>중요</span>
       </div>
       <div className={styles.contentContainer}>
-        <Input todos={todos} setTodos={setTodos} important="true" />
+        <Input todos={todos} setTodos={setTodos} important={true} />
         <div className={styles.todosContainer}>
           {importantTodos.map((todo) => {
             return (

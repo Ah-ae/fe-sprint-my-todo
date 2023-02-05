@@ -41,17 +41,11 @@ export default function Todo({ todo, todos, setTodos }) {
     inputEl.current.focus();
   };
   const handleInputKeyUp = (e) => {
-    const target = todos.find((todo) => todo.id === id);
-    const updatedTodos = todos.map((todo) => {
-      if (todo.id === target.id) {
-        target.text = inputValue;
-        return target;
-      } else return todo;
-    });
-    setTodos(updatedTodos);
     setIsEditing(false);
     pEl.current.style.display = "block";
     inputEl.current.style.display = "none";
+    axios.patch(`${SERVER_URL}/${id}`, { text: inputValue });
+    window.location.reload();
   };
   const handleInput = (e) => {
     setInputValue(e.target.value);
