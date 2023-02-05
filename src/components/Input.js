@@ -19,7 +19,8 @@ export default function Input({ todos, setTodos, important }) {
       important,
     };
     axios.post(SERVER_URL, newTodo);
-    window.location.reload();
+    setTodos([...todos, newTodo]);
+    setInputValue("");
   };
 
   return (

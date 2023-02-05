@@ -19,6 +19,7 @@ export default function Todo({ todo, todos, setTodos }) {
 
   const taskDone = () => {
     const target = todos.find((todo) => todo.id === id);
+    axios.patch(`${SERVER_URL}/${id}`, { done: !target.done });
     const updatedTodos = todos.map((todo) => {
       if (todo.id === target.id) {
         target.done = !target.done;
@@ -27,12 +28,21 @@ export default function Todo({ todo, todos, setTodos }) {
     });
     setTodos(updatedTodos);
   };
-
-  const deleteTodo = () => {
-    axios.delete(`${SERVER_URL}/${id}`);
-    window.location.reload();
+  const handleImportant = (e) => {
+    const target = todos.find((todo) => todo.id === id);
+    axios.patch(`${SERVER_URL}/${id}`, { important: !target.important });
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === target.id) {
+        target.important = !target.important;
+        return target;
+      } else return todo;
+    });
+    setTodos(updatedTodos);
   };
 
+  const handleInput = (e) => {
+    setInputValue(e.target.value);
+  };
   const editTodo = () => {
     setIsEditing(true);
     pEl.current.style.display = "none";
@@ -45,22 +55,22 @@ export default function Todo({ todo, todos, setTodos }) {
     pEl.current.style.display = "block";
     inputEl.current.style.display = "none";
     axios.patch(`${SERVER_URL}/${id}`, { text: inputValue });
-    window.location.reload();
-  };
-  const handleInput = (e) => {
-    setInputValue(e.target.value);
-  };
-
-  const handleImportant = (e) => {
     const target = todos.find((todo) => todo.id === id);
     const updatedTodos = todos.map((todo) => {
       if (todo.id === target.id) {
-        target.important = !target.important;
+        target.text = inputValue;
         return target;
       } else return todo;
     });
     setTodos(updatedTodos);
   };
+
+  const deleteTodo = () => {
+    axios.delete(`${SERVER_URL}/${id}`);
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
+  };
+
   return (
     <>
       <li className={styles.container}>
