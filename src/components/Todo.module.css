@@ -72,20 +72,6 @@
     cursor: pointer;
 }
 
-.starGroup {
-    position: relative;
-    cursor: pointer;
-}
-.filledStar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: none;
-}
-.starGroup:hover .filledStar {
-    display: block
-}
-
 
 .container:hover {
     background-color: var(--bg-highlight);
