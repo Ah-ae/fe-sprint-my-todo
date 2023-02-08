@@ -31,7 +31,7 @@
     /* background-color: rgb(15, 160, 160); */
 }
 .textGroup:hover {
-    background-color: var(--bg-hover);
+    background-color: var(--bg-highlight);
 }
 .task {
     padding: 0 16px;
@@ -86,8 +86,9 @@
     display: block
 }
 
+
 .container:hover {
-    background-color: var(--bg-hover);
+    background-color: var(--bg-highlight);
 }
 .container:first-child {
     margin-top: 16px;

@@ -1,6 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
-// import styles from "./Sidebar.module.css";
 import { BsStar } from "react-icons/bs";
 import { RxHamburgerMenu } from "react-icons/rx";
 
@@ -13,7 +12,7 @@ const Nav = styled.nav`
   }
 
   & > .divider {
-    margin: 12px 0;
+    margin: 8px 0;
     width: 86%;
     height: 1px;
     border-bottom: 1px solid #e1dfdd;
@@ -25,23 +24,26 @@ const StyledLink = styled(Link)`
   position: relative;
   padding: 24px;
   display: flex;
-  align-items: center;
   background-color: ${(props) =>
-    props.path === props.to ? "var(--bg-hover)" : "#fff"};
+    props.path === props.to && "var(--bg-highlight)"};
+  font-weight: ${(props) => props.path === props.to && "600"};
   cursor: pointer;
 
   & > span:first-of-type {
     margin-left: 16px;
   }
-  & > span:nth-of-type(2) {
+  & > span:last-of-type {
     margin-left: auto;
+  }
+  &:first-child {
+    margin-top: 8px;
   }
 `;
 
 export default function Sidebar({ todos }) {
   const { pathname: path } = useLocation();
-
   const count = todos.filter((todo) => todo.important === true);
+
   return (
     <Nav>
       <StyledLink to="/important" path={path}>

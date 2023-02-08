@@ -8,13 +8,13 @@ import Main from "./components/pages/Main";
 import Important from "./components/pages/Important";
 
 function App() {
-  const { REACT_APP_SERVER_URL: SERVER_URL } = process.env;
+  const { REACT_APP_SERVER_URL: URL } = process.env;
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
     async function getData() {
       try {
-        const res = await axios.get(SERVER_URL);
+        const res = await axios.get(URL);
         setTodos(res.data);
       } catch (error) {
         console.error(error);

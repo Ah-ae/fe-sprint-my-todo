@@ -5,7 +5,7 @@ import plus from "../images/plus.svg";
 
 export default function Input({ todos, setTodos, important }) {
   const [inputValue, setInputValue] = useState("");
-  const { REACT_APP_SERVER_URL: SERVER_URL } = process.env;
+  const { REACT_APP_SERVER_URL: URL } = process.env;
 
   const handleInput = (e) => {
     setInputValue(e.target.value);
@@ -18,9 +18,8 @@ export default function Input({ todos, setTodos, important }) {
       done: false,
       important,
     };
-    axios.post(SERVER_URL, newTodo);
-    setTodos([...todos, newTodo]);
-    setInputValue("");
+    axios.post(URL, newTodo);
+    window.location.reload();
   };
 
   return (
