@@ -37,7 +37,7 @@
       "done": false,
       "important": true,
       "createdAt": "2023-02-09T01:20:18.598Z",
-      "updatedAt": "2023-02-09T01:21:28.150Z",
+      "updatedAt": "2023-02-09T01:32:38.748Z",
       "id": 5
     },
     {
@@ -61,7 +61,7 @@
       "done": false,
       "important": true,
       "createdAt": "2023-02-09T01:20:45.959Z",
-      "updatedAt": "2023-02-09T01:21:07.622Z",
+      "updatedAt": "2023-02-09T02:04:53.575Z",
       "id": 8
     },
     {
@@ -95,6 +95,22 @@
       "createdAt": "2023-02-09T01:21:05.331Z",
       "updatedAt": "",
       "id": 12
+    },
+    {
+      "text": "edit 모드일 때 엔터키를 눌러서 수정을 완료하지 않고, 화면의 다른 곳을 클릭한다면 edit 모드가 종료되게 하기",
+      "done": false,
+      "important": true,
+      "createdAt": "2023-02-09T01:33:59.473Z",
+      "updatedAt": "2023-02-09T02:22:05.738Z",
+      "id": 14
+    },
+    {
+      "text": "input이 텍스트 value 크기만큼 자동으로 늘어날 수는 없나?",
+      "done": false,
+      "important": true,
+      "createdAt": "2023-02-09T02:05:21.847Z",
+      "updatedAt": "",
+      "id": 15
     }
   ]
 }

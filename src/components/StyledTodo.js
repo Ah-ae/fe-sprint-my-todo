@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import styles from "./Todo.module.css";
@@ -92,12 +92,8 @@ export default function Todo({ todo, todos, setTodos }) {
   const { id, text, done, important } = todo;
   const [isEditing, setIsEditing] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const inputEl = useRef(null);
+  // const inputEl = useRef(null);
   const { REACT_APP_SERVER_URL: URL } = process.env;
-
-  useEffect(() => {
-    inputEl?.current?.focus?.();
-  }, [inputEl]);
 
   const taskDone = () => {
     const target = todos.find((todo) => todo.id === id);
@@ -180,14 +176,18 @@ export default function Todo({ todo, todos, setTodos }) {
               {text}
             </StyledP>
             <StyledInput
+              type="text"
               value={inputValue}
               onChange={handleInput}
               onKeyUp={(e) => {
                 if (e.key === "Enter") handleInputKeyUp(e);
               }}
               isEditing={isEditing}
-              ref={inputEl}
-              type="text"
+              ref={function (input) {
+                if (input !== null) {
+                  input.focus();
+                }
+              }}
             />
           </TextGroup>
         </TaskWrapper>
