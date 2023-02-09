@@ -34,10 +34,10 @@
     },
     {
       "text": "INPUT AUTOFOCUS: 리액트 폴리필",
-      "done": false,
+      "done": true,
       "important": true,
       "createdAt": "2023-02-09T01:20:18.598Z",
-      "updatedAt": "2023-02-09T01:32:38.748Z",
+      "updatedAt": "2023-02-09T03:17:15.208Z",
       "id": 5
     },
     {
@@ -73,52 +73,28 @@
       "id": 9
     },
     {
-      "text": "grid column system 적용",
-      "done": false,
-      "important": false,
-      "createdAt": "2023-02-09T01:20:55.532Z",
-      "updatedAt": "",
-      "id": 10
-    },
-    {
-      "text": "header에 검색창 추가",
-      "done": false,
-      "important": false,
-      "createdAt": "2023-02-09T01:21:00.572Z",
-      "updatedAt": "",
-      "id": 11
-    },
-    {
-      "text": "수정/삭제 버튼 더 나은 UI 방안 찾기: 우클릭 -> 삭제버튼 제공?",
-      "done": false,
-      "important": false,
-      "createdAt": "2023-02-09T01:21:05.331Z",
-      "updatedAt": "",
-      "id": 12
-    },
-    {
       "text": "edit 모드일 때 엔터키를 눌러서 수정을 완료하지 않고, 화면의 다른 곳을 클릭한다면 edit 모드가 종료되게 하기",
       "done": false,
       "important": true,
       "createdAt": "2023-02-09T01:33:59.473Z",
-      "updatedAt": "2023-02-09T02:22:05.738Z",
+      "updatedAt": "2023-02-09T03:11:34.574Z",
       "id": 14
     },
     {
-      "text": "input이 텍스트 value 크기만큼 자동으로 늘어날 수는 없나? 되는듯?",
+      "text": "input이 텍스트 value 크기만큼 자동으로 늘어날 수는 없나?",
       "done": false,
       "important": true,
       "createdAt": "2023-02-09T02:05:21.847Z",
-      "updatedAt": "2023-02-09T02:42:17.948Z",
+      "updatedAt": "2023-02-09T03:47:16.477Z",
       "id": 15
     },
     {
-      "text": "테스트",
+      "text": "수정이 되야 하는데",
       "done": false,
       "important": false,
-      "createdAt": "2023-02-09T03:08:15.058Z",
-      "updatedAt": "2023-02-09T03:09:02.135Z",
-      "id": 16
+      "createdAt": "2023-02-09T03:15:29.609Z",
+      "updatedAt": "2023-02-09T03:24:22.855Z",
+      "id": 17
     }
   ]
 }

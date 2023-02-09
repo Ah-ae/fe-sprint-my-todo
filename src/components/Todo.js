@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import circle from "../images/circle.svg";
@@ -31,6 +31,7 @@ const Container = styled.li`
 const TaskWrapper = styled.div`
   display: flex;
   align-items: center;
+  background-color: tomato;
 `;
 const CheckBoxGroup = styled.div`
   position: relative;
@@ -47,35 +48,26 @@ const CheckBoxGroup = styled.div`
   }
 `;
 const TextGroup = styled.div`
-  width: 100%;
   padding: 0 16px;
   font-family: var(--main-font);
-
-  /* &:hover > input {
-    background-color: inherit;
-  } */
+  display: flex;
+  width: 100%;
+  background-color: lemonchiffon;
 `;
 const StyledP = styled.p`
   color: var(--font-color-primary);
   display: ${(props) => (props.isEditing ? "none" : "inline-block")};
   text-decoration: ${(props) => props.done && "line-through"};
+  flex: 1;
 `;
 const StyledInput = styled.input`
   padding: 0;
-  position: ${(props) => !props.isEditing && "absolute"};
-  top: 0;
-  color: var(--font-color-primary);
+  /* display: block; */
+  width: 300px;
   font-size: 14px;
-  display: ${(props) => (props.isEditing ? "inline-block" : "none")};
-
-  &:focus {
-    /* input 가로 값도 손봐야함 */
-    width: 860%;
-    background-color: inherit;
-  }
-  &:focus:hover {
-    background-color: inherit;
-  }
+  color: var(--font-color-primary);
+  background-color: inherit;
+  text-decoration: ${(props) => props.done && "line-through"};
 `;
 
 const ButtonWrapper = styled.div`
@@ -91,7 +83,7 @@ export default function Todo({ todo, todos, setTodos }) {
   const { id, text, done, important } = todo;
   const [isEditing, setIsEditing] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  // const inputEl = useRef(null);
+  const inputEl = useRef(null);
   const { REACT_APP_SERVER_URL: URL } = process.env;
 
   const taskDone = () => {
@@ -109,6 +101,7 @@ export default function Todo({ todo, todos, setTodos }) {
     });
     setTodos(updatedTodos);
   };
+
   const handleImportant = () => {
     const target = todos.find((todo) => todo.id === id);
     const updated = {
@@ -158,8 +151,6 @@ export default function Todo({ todo, todos, setTodos }) {
     setTodos(updatedTodos);
   };
 
-  console.log(isEditing);
-
   return (
     <>
       <Container>
@@ -169,22 +160,17 @@ export default function Todo({ todo, todos, setTodos }) {
             <img className="hover" src={checkHover} alt="checkbox icon"></img>
           </CheckBoxGroup>
           <TextGroup>
-            <StyledP done={done} isEditing={isEditing}>
-              {text}
-            </StyledP>
             <StyledInput
               type="text"
-              value={inputValue}
+              value={text}
               onChange={handleInput}
               onKeyUp={(e) => {
                 if (e.key === "Enter") handleInputKeyUp(e);
               }}
               isEditing={isEditing}
-              ref={function (input) {
-                if (input !== null) {
-                  input.focus();
-                }
-              }}
+              done={done}
+              autoFocus
+              disabled
             />
           </TextGroup>
         </TaskWrapper>
