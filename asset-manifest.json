@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/fe-sprint-my-todo/static/css/main.379161f6.css",
-    "main.js": "/fe-sprint-my-todo/static/js/main.881189e6.js",
-    "static/js/787.8f456221.chunk.js": "/fe-sprint-my-todo/static/js/787.8f456221.chunk.js",
-    "static/media/delete.svg": "/fe-sprint-my-todo/static/media/delete.e4ed6a2c5afc34589d305be10f438877.svg",
-    "static/media/star.svg": "/fe-sprint-my-todo/static/media/star.4fb828769a6029ef20acca1795fb8ad1.svg",
-    "static/media/edit.svg": "/fe-sprint-my-todo/static/media/edit.fcfe39d3c18a95ed89ddda6eb50d2fd3.svg",
-    "static/media/star-fill.svg": "/fe-sprint-my-todo/static/media/star-fill.4add5b081ca46d3acdbcaaf14076cd23.svg",
-    "static/media/check-circle.svg": "/fe-sprint-my-todo/static/media/check-circle.d98ca9729ea9ac85e73ed144f110730d.svg",
-    "static/media/check-circle-fill.svg": "/fe-sprint-my-todo/static/media/check-circle-fill.746ffdd942cfbf407044efa44a6cf039.svg",
-    "index.html": "/fe-sprint-my-todo/index.html",
-    "static/media/plus.svg": "/fe-sprint-my-todo/static/media/plus.a3f09099cf2cf2a18371ceb6bb0cce8e.svg",
-    "static/media/circle.svg": "/fe-sprint-my-todo/static/media/circle.a6732aa9c68260646d46b1b4b5e29b50.svg",
-    "main.379161f6.css.map": "/fe-sprint-my-todo/static/css/main.379161f6.css.map",
-    "main.881189e6.js.map": "/fe-sprint-my-todo/static/js/main.881189e6.js.map",
-    "787.8f456221.chunk.js.map": "/fe-sprint-my-todo/static/js/787.8f456221.chunk.js.map"
+    "main.css": "/static/css/main.1607a730.css",
+    "main.js": "/static/js/main.799d296e.js",
+    "static/js/787.8f456221.chunk.js": "/static/js/787.8f456221.chunk.js",
+    "static/media/delete.svg": "/static/media/delete.e4ed6a2c5afc34589d305be10f438877.svg",
+    "static/media/star.svg": "/static/media/star.4fb828769a6029ef20acca1795fb8ad1.svg",
+    "static/media/edit.svg": "/static/media/edit.fcfe39d3c18a95ed89ddda6eb50d2fd3.svg",
+    "static/media/star-fill.svg": "/static/media/star-fill.4add5b081ca46d3acdbcaaf14076cd23.svg",
+    "static/media/check-circle.svg": "/static/media/check-circle.d98ca9729ea9ac85e73ed144f110730d.svg",
+    "static/media/check-circle-fill.svg": "/static/media/check-circle-fill.746ffdd942cfbf407044efa44a6cf039.svg",
+    "index.html": "/index.html",
+    "static/media/plus.svg": "/static/media/plus.a3f09099cf2cf2a18371ceb6bb0cce8e.svg",
+    "static/media/circle.svg": "/static/media/circle.a6732aa9c68260646d46b1b4b5e29b50.svg",
+    "main.1607a730.css.map": "/static/css/main.1607a730.css.map",
+    "main.799d296e.js.map": "/static/js/main.799d296e.js.map",
+    "787.8f456221.chunk.js.map": "/static/js/787.8f456221.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.379161f6.css",
-    "static/js/main.881189e6.js"
+    "static/css/main.1607a730.css",
+    "static/js/main.799d296e.js"
   ]
 }
