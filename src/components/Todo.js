@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import Modal from "./Modal";
@@ -69,7 +69,6 @@ export default function Todo({ todo, todos, setTodos }) {
   const [notEditable, setNotEditable] = useState(true);
   const [inputValue, setInputValue] = useState(text);
   const [showModal, setShowModal] = useState(false);
-  const inputEl = useRef(null);
   const { REACT_APP_SERVER_URL: URL } = process.env;
 
   const taskDone = () => {
@@ -151,7 +150,6 @@ export default function Todo({ todo, todos, setTodos }) {
             if (e.key === "Enter") handleInputKeyUp(e);
           }}
           done={done}
-          // ref={inputEl}
           ref={(input) => {
             if (input !== null) input.focus();
           }}
