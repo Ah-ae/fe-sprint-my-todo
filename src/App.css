@@ -3,7 +3,8 @@
   --main-blue: #2563cf;
   --font-color-primary: #292827;
   --bg-shadow: rgba(0, 0, 0, 0.1);
-  --bg-highlight: rgb(239, 246, 252)
+  --bg-highlight: rgb(239, 246, 252);
+  --main-font: Arial, Helvetica, sans-serif;
 }
 
 /* reset */
@@ -18,6 +19,8 @@ body {
 }
 
 input {
+  margin: 0;
+  padding: 0;
   border: 0;
   -webkit-appearance: none;
   -moz-appearance: none;

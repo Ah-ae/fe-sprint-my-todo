@@ -17,6 +17,8 @@ export default function Input({ todos, setTodos, important }) {
       text: inputValue,
       done: false,
       important,
+      createdAt: new Date().toISOString(),
+      updatedAt: "",
     };
     axios.post(URL, newTodo);
     window.location.reload();

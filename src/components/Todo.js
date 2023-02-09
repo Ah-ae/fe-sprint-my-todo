@@ -27,6 +27,7 @@ export default function Todo({ todo, todos, setTodos }) {
     });
     setTodos(updatedTodos);
   };
+  console.log(done);
 
   const deleteTodo = () => {
     axios.delete(`${SERVER_URL}/${id}`);

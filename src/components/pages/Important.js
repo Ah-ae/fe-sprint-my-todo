@@ -1,6 +1,7 @@
 import styles from "./Important.module.css";
 import Input from "../Input";
 import Todo from "../Todo";
+import StyledTodo from "../StyledTodo";
 
 export default function Important({ todos, setTodos }) {
   const importantTodos = todos.filter((todo) => todo.important === true);
@@ -28,7 +29,7 @@ export default function Important({ todos, setTodos }) {
         <div className={styles.todosContainer}>
           {importantTodos.map((todo) => {
             return (
-              <Todo
+              <StyledTodo
                 key={todo.id}
                 todo={todo}
                 todos={todos}

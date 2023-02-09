@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import styles from "./Todo.module.css";
@@ -12,7 +12,7 @@ import trash from "../images/delete.svg";
 
 const Container = styled.li`
   position: relative;
-  margin-top: 12px;
+  margin-top: 8px;
   padding: 16px 24px;
   display: flex;
   justify-content: space-between;
@@ -24,6 +24,9 @@ const Container = styled.li`
   &:hover {
     background-color: var(--bg-highlight);
   }
+  &:first-child {
+    margin-top: 16px;
+  }
 `;
 
 const TaskWrapper = styled.div`
@@ -33,8 +36,6 @@ const TaskWrapper = styled.div`
 const CheckBoxGroup = styled.div`
   position: relative;
   cursor: pointer;
-  display: flex;
-  align-items: center;
 
   & > .hover {
     position: absolute;
@@ -49,26 +50,31 @@ const CheckBoxGroup = styled.div`
 const TextGroup = styled.div`
   width: 100%;
   padding: 0 16px;
+  font-family: var(--main-font);
 
-  & > p {
-    color: var(--font-color-primary);
-    text-decoration: ${(props) => props.done && "line-through"};
-  }
+  /* &:hover > input {
+    background-color: inherit;
+  } */
+`;
+const StyledP = styled.p`
+  color: var(--font-color-primary);
+  display: ${(props) => (props.isEditing ? "none" : "inline-block")};
+  text-decoration: ${(props) => props.done && "line-through"};
+`;
+const StyledInput = styled.input`
+  padding: 0;
+  position: ${(props) => !props.isEditing && "absolute"};
+  top: 0;
+  color: var(--font-color-primary);
+  font-size: 14px;
+  display: ${(props) => (props.isEditing ? "inline-block" : "none")};
 
-  & > input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    line-height: 1.4;
-    color: var(--font-color-primary);
-    display: ${(props) => (props.edit ? "inline-block" : "none")};
-  }
-  & > input:focus {
+  &:focus {
     /* input 가로 값도 손봐야함 */
-    width: 360%;
+    width: 860%;
     background-color: inherit;
   }
-  & > input:focus:hover {
+  &:focus:hover {
     background-color: inherit;
   }
 `;
@@ -86,16 +92,23 @@ export default function Todo({ todo, todos, setTodos }) {
   const { id, text, done, important } = todo;
   const [isEditing, setIsEditing] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const pEl = useRef(null);
   const inputEl = useRef(null);
   const { REACT_APP_SERVER_URL: URL } = process.env;
 
+  useEffect(() => {
+    inputEl?.current?.focus?.();
+  }, [inputEl]);
+
   const taskDone = () => {
     const target = todos.find((todo) => todo.id === id);
-    axios.patch(`${URL}/${id}`, { done: !target.done });
+    axios.patch(`${URL}/${id}`, {
+      done: !target.done,
+      updatedAt: new Date().toISOString(),
+    });
     const updatedTodos = todos.map((todo) => {
       if (todo.id === target.id) {
         target.done = !target.done;
+        target.updatedAt = new Date().toISOString();
         return target;
       } else return todo;
     });
@@ -103,11 +116,15 @@ export default function Todo({ todo, todos, setTodos }) {
   };
   const handleImportant = () => {
     const target = todos.find((todo) => todo.id === id);
-    const updated = { important: !target.important };
+    const updated = {
+      important: !target.important,
+      updatedAt: new Date().toISOString(),
+    };
     axios.patch(`${URL}/${id}`, updated);
     const updatedTodos = todos.map((todo) => {
       if (todo.id === target.id) {
         target.important = !target.important;
+        target.updatedAt = new Date().toISOString();
         return target;
       } else return todo;
     });
@@ -117,22 +134,25 @@ export default function Todo({ todo, todos, setTodos }) {
   const handleInput = (e) => {
     setInputValue(e.target.value);
   };
+
   const editTodo = () => {
     setIsEditing(true);
-    pEl.current.style.display = "none";
-    inputEl.current.style.display = "inline-block";
     setInputValue(text);
-    inputEl.current.focus();
+    // ! 왜 수정 버튼을 두 번 눌러야 focus가 가는 것인지
+    // inputEl.current.focus();
   };
+
   const handleInputKeyUp = (e) => {
     setIsEditing(false);
-    pEl.current.style.display = "block";
-    inputEl.current.style.display = "none";
-    axios.patch(`${URL}/${id}`, { text: inputValue });
+    axios.patch(`${URL}/${id}`, {
+      text: inputValue,
+      updatedAt: new Date().toISOString(),
+    });
     const target = todos.find((todo) => todo.id === id);
     const updatedTodos = todos.map((todo) => {
       if (todo.id === target.id) {
         target.text = inputValue;
+        target.updatedAt = new Date().toISOString();
         return target;
       } else return todo;
     });
@@ -145,6 +165,8 @@ export default function Todo({ todo, todos, setTodos }) {
     setTodos(updatedTodos);
   };
 
+  console.log(isEditing);
+
   return (
     <>
       <Container>
@@ -154,16 +176,16 @@ export default function Todo({ todo, todos, setTodos }) {
             <img className="hover" src={checkHover} alt="checkbox icon"></img>
           </CheckBoxGroup>
           <TextGroup>
-            <p done={done} ref={pEl}>
+            <StyledP done={done} isEditing={isEditing}>
               {text}
-            </p>
-            <input
+            </StyledP>
+            <StyledInput
               value={inputValue}
               onChange={handleInput}
               onKeyUp={(e) => {
                 if (e.key === "Enter") handleInputKeyUp(e);
               }}
-              edit={isEditing}
+              isEditing={isEditing}
               ref={inputEl}
               type="text"
             />
