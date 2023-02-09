@@ -5,7 +5,7 @@
       "done": true,
       "important": true,
       "createdAt": "2023-02-09T01:19:29.559Z",
-      "updatedAt": "2023-02-09T01:19:34.786Z",
+      "updatedAt": "2023-02-09T06:13:32.785Z",
       "id": 1
     },
     {
@@ -17,11 +17,11 @@
       "id": 2
     },
     {
-      "text": "사이드바 미디어쿼리 + 현재 선택한 페이지 색상 다르게 처리",
+      "text": "사이드바 미디어쿼리 + 현재 선택한 페이지 색상 다르게 처리 계속 길어지면 어떤 식으로 되는건지 밀리벼러네",
       "done": true,
       "important": false,
       "createdAt": "2023-02-09T01:19:51.744Z",
-      "updatedAt": "2023-02-09T01:19:53.258Z",
+      "updatedAt": "2023-02-09T06:13:59.422Z",
       "id": 3
     },
     {
@@ -33,11 +33,11 @@
       "id": 4
     },
     {
-      "text": "INPUT AUTOFOCUS: 리액트 폴리필",
+      "text": "INPUT AUTOFOCUS: 리액트 폴리필 -> ref 임기응변 해결책",
       "done": true,
       "important": true,
       "createdAt": "2023-02-09T01:20:18.598Z",
-      "updatedAt": "2023-02-09T03:17:15.208Z",
+      "updatedAt": "2023-02-09T06:25:52.417Z",
       "id": 5
     },
     {
@@ -49,52 +49,36 @@
       "id": 6
     },
     {
-      "text": "1) input -> textarea로 변경하고, 창 크기 설정 2) 수정 버튼 누른 상태에서 다른 데 클릭할 때 색상 변경되는 거 막아주기 -> 다른데 클릭하면 edit 모드가 끝나게!! (다른데 클릭한 걸 어떻게 알지?)",
+      "text": "textarea 상하 중앙 정렬 방법",
       "done": false,
       "important": true,
       "createdAt": "2023-02-09T01:20:39.781Z",
-      "updatedAt": "2023-02-09T01:21:09.096Z",
+      "updatedAt": "2023-02-09T06:27:13.680Z",
       "id": 7
     },
     {
-      "text": "github pages 배포: json server 버전으로 배포하면 서버 어떻게 켜주는건지?",
+      "text": "github pages 배포: json server 버전으로 배포하면 서버 어떻게 켜주는건지? 왜이래?\n",
       "done": false,
       "important": true,
       "createdAt": "2023-02-09T01:20:45.959Z",
-      "updatedAt": "2023-02-09T02:04:53.575Z",
+      "updatedAt": "2023-02-09T05:46:27.919Z",
       "id": 8
     },
     {
-      "text": "카테고리 목록 추가",
+      "text": "카테고리 목록 추가\n",
       "done": false,
       "important": false,
       "createdAt": "2023-02-09T01:20:51.133Z",
-      "updatedAt": "",
+      "updatedAt": "2023-02-09T06:17:57.190Z",
       "id": 9
     },
     {
-      "text": "edit 모드일 때 엔터키를 눌러서 수정을 완료하지 않고, 화면의 다른 곳을 클릭한다면 edit 모드가 종료되게 하기",
-      "done": false,
-      "important": true,
-      "createdAt": "2023-02-09T01:33:59.473Z",
-      "updatedAt": "2023-02-09T03:11:34.574Z",
-      "id": 14
-    },
-    {
-      "text": "input이 텍스트 value 크기만큼 자동으로 늘어날 수는 없나?",
+      "text": "header 검색창 추가\n",
       "done": false,
       "important": true,
       "createdAt": "2023-02-09T02:05:21.847Z",
-      "updatedAt": "2023-02-09T03:47:16.477Z",
+      "updatedAt": "2023-02-09T06:17:51.680Z",
       "id": 15
-    },
-    {
-      "text": "수정이 되야 하는데",
-      "done": false,
-      "important": false,
-      "createdAt": "2023-02-09T03:15:29.609Z",
-      "updatedAt": "2023-02-09T03:24:22.855Z",
-      "id": 17
     }
   ]
 }

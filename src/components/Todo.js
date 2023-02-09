@@ -11,10 +11,9 @@ import trash from "../images/delete.svg";
 
 const Container = styled.li`
   position: relative;
-  margin-top: 8px;
+  margin: 12px 0;
   padding: 16px 24px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   border-radius: 8px;
   background-color: white;
@@ -28,14 +27,11 @@ const Container = styled.li`
   }
 `;
 
-const TaskWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  background-color: tomato;
-`;
 const CheckBoxGroup = styled.div`
   position: relative;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 
   & > .hover {
     position: absolute;
@@ -47,30 +43,18 @@ const CheckBoxGroup = styled.div`
     display: block;
   }
 `;
-const TextGroup = styled.div`
-  padding: 0 16px;
-  font-family: var(--main-font);
-  display: flex;
-  width: 100%;
-  background-color: lemonchiffon;
-`;
-const StyledP = styled.p`
-  color: var(--font-color-primary);
-  display: ${(props) => (props.isEditing ? "none" : "inline-block")};
-  text-decoration: ${(props) => props.done && "line-through"};
-  flex: 1;
-`;
+
 const StyledInput = styled.input`
-  padding: 0;
-  /* display: block; */
-  width: 300px;
-  font-size: 14px;
+  margin: 0 16px;
+  flex: 1;
+  font-size: inherit;
+  font-family: var(--main-font);
   color: var(--font-color-primary);
   background-color: inherit;
   text-decoration: ${(props) => props.done && "line-through"};
 `;
 
-const ButtonWrapper = styled.div`
+const ButtonGroup = styled.div`
   display: flex;
   justify-content: space-between;
   min-width: 72px;
@@ -81,8 +65,8 @@ const ButtonWrapper = styled.div`
 
 export default function Todo({ todo, todos, setTodos }) {
   const { id, text, done, important } = todo;
-  const [isEditing, setIsEditing] = useState(false);
-  const [inputValue, setInputValue] = useState("");
+  const [notEditable, setNotEditable] = useState(true);
+  const [inputValue, setInputValue] = useState(text);
   const inputEl = useRef(null);
   const { REACT_APP_SERVER_URL: URL } = process.env;
 
@@ -124,12 +108,12 @@ export default function Todo({ todo, todos, setTodos }) {
   };
 
   const editTodo = () => {
-    setIsEditing(true);
-    setInputValue(text);
+    setNotEditable(false);
   };
 
   const handleInputKeyUp = (e) => {
-    setIsEditing(false);
+    setNotEditable(true);
+    console.log(inputValue);
     axios.patch(`${URL}/${id}`, {
       text: inputValue,
       updatedAt: new Date().toISOString(),
@@ -154,34 +138,33 @@ export default function Todo({ todo, todos, setTodos }) {
   return (
     <>
       <Container>
-        <TaskWrapper>
-          <CheckBoxGroup onClick={taskDone}>
-            <img src={done ? checked : circle} alt="checkbox icon"></img>
-            <img className="hover" src={checkHover} alt="checkbox icon"></img>
-          </CheckBoxGroup>
-          <TextGroup>
-            <StyledInput
-              type="text"
-              value={text}
-              onChange={handleInput}
-              onKeyUp={(e) => {
-                if (e.key === "Enter") handleInputKeyUp(e);
-              }}
-              isEditing={isEditing}
-              done={done}
-              autoFocus
-              disabled
-            />
-          </TextGroup>
-        </TaskWrapper>
-        <ButtonWrapper>
+        <CheckBoxGroup onClick={taskDone}>
+          <img src={done ? checked : circle} alt="checkbox icon"></img>
+          <img className="hover" src={checkHover} alt="checkbox icon"></img>
+        </CheckBoxGroup>
+        <StyledInput
+          type="text"
+          maxLength="80"
+          value={inputValue}
+          onChange={handleInput}
+          onKeyUp={(e) => {
+            if (e.key === "Enter") handleInputKeyUp(e);
+          }}
+          done={done}
+          // ref={inputEl}
+          ref={(input) => {
+            if (input !== null) input.focus();
+          }}
+          disabled={notEditable}
+        />
+        <ButtonGroup>
           <img
             src={important ? `${filledStar}` : `${emptyStar}`}
             onClick={handleImportant}
           ></img>
           <img src={edit} onClick={editTodo} alt="edit icon"></img>
           <img src={trash} onClick={deleteTodo} alt="delete icon"></img>
-        </ButtonWrapper>
+        </ButtonGroup>
       </Container>
     </>
   );
