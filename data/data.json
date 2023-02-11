@@ -65,20 +65,28 @@
       "id": 8
     },
     {
-      "text": "카테고리 목록 추가\n",
+      "text": "카테고리 목록 추가",
       "done": false,
       "important": false,
       "createdAt": "2023-02-09T01:20:51.133Z",
-      "updatedAt": "2023-02-09T08:43:46.437Z",
+      "updatedAt": "2023-02-11T08:43:11.391Z",
       "id": 9
     },
     {
-      "text": "header 검색창 추가\n",
+      "text": "header 검색창 추가",
       "done": false,
       "important": false,
       "createdAt": "2023-02-09T02:05:21.847Z",
-      "updatedAt": "2023-02-09T07:43:16.505Z",
+      "updatedAt": "2023-02-11T09:01:46.009Z",
       "id": 15
+    },
+    {
+      "text": "테스트",
+      "done": false,
+      "important": true,
+      "createdAt": "2023-02-11T09:43:01.333Z",
+      "updatedAt": "2023-02-11T09:45:18.035Z",
+      "id": 16
     }
   ]
 }

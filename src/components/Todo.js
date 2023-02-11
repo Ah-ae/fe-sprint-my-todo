@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import Modal from "./Modal";
+
+// icon import
 import circle from "../images/circle.svg";
 import checkHover from "../images/check-circle.svg";
 import checked from "../images/check-circle-fill.svg";
@@ -45,7 +47,7 @@ const CheckBoxGroup = styled.div`
   }
 `;
 
-const StyledInput = styled.input`
+const StyledInput = styled.textarea`
   margin: 0 16px;
   flex: 1;
   font-size: inherit;
@@ -59,7 +61,7 @@ const ButtonGroup = styled.div`
   display: flex;
   justify-content: space-between;
   min-width: 72px;
-  & > img {
+  img {
     cursor: pointer;
   }
 `;
@@ -70,6 +72,8 @@ export default function Todo({ todo, todos, setTodos }) {
   const [inputValue, setInputValue] = useState(text);
   const [showModal, setShowModal] = useState(false);
   const { REACT_APP_SERVER_URL: URL } = process.env;
+  const textareaRef = useRef(null);
+  const hiddenTextareaRef = useRef(null);
 
   const taskDone = () => {
     const target = todos.find((todo) => todo.id === id);
@@ -110,15 +114,23 @@ export default function Todo({ todo, todos, setTodos }) {
 
   const editTodo = () => {
     setNotEditable(false);
+    // ! 영원히 미스테리
+    textareaRef.current.focus();
   };
 
-  const handleInputKeyUp = (e) => {
+  const handleInputKeyUp = () => {
     setNotEditable(true);
-    console.log(inputValue);
+
+    // @variable newInputValue: 개행문자(\n) 방어
+    const idx = inputValue.indexOf("\n");
+    const newInputValue = inputValue.slice(0, idx) + inputValue.slice(idx + 1);
+    setInputValue(newInputValue);
+
     axios.patch(`${URL}/${id}`, {
-      text: inputValue,
+      text: newInputValue,
       updatedAt: new Date().toISOString(),
     });
+    // window.location.reload();
     const target = todos.find((todo) => todo.id === id);
     const updatedTodos = todos.map((todo) => {
       if (todo.id === target.id) {
@@ -129,6 +141,12 @@ export default function Todo({ todo, todos, setTodos }) {
     });
     setTodos(updatedTodos);
   };
+
+  useEffect(() => {
+    const textarea = textareaRef.current;
+    textarea.style.height = "auto";
+    textarea.style.height = `${textarea.scrollHeight}px`;
+  }, [textareaRef]);
 
   const handleModal = () => {
     setShowModal((cur) => !cur);
@@ -142,6 +160,7 @@ export default function Todo({ todo, todos, setTodos }) {
           <img className="hover" src={checkHover} alt="checkbox icon"></img>
         </CheckBoxGroup>
         <StyledInput
+          rows="1"
           type="text"
           maxLength="80"
           value={inputValue}
@@ -150,9 +169,10 @@ export default function Todo({ todo, todos, setTodos }) {
             if (e.key === "Enter") handleInputKeyUp(e);
           }}
           done={done}
-          ref={(input) => {
-            if (input !== null) input.focus();
-          }}
+          // ref={(input) => {
+          //   if (input !== null) input.focus();
+          // }}
+          ref={textareaRef}
           disabled={notEditable}
         />
         <ButtonGroup>
