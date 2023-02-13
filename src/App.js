@@ -32,7 +32,7 @@ function App() {
     async function getData() {
       try {
         const res = await axios.get(URL);
-        setTodos(res.data);
+        setTodos([...todos, res.data]);
       } catch (error) {
         console.error(error);
       }
