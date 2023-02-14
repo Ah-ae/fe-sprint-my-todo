@@ -19,6 +19,14 @@ function App() {
       id: 1,
     },
     {
+      text: 'dev 브랜치 테스트',
+      done: false,
+      important: true,
+      createdAt: '2023-02-09T01:19:43.262Z',
+      updatedAt: '2023-02-09T01:19:46.509Z',
+      id: 2,
+    },
+    {
       text: '수정/삭제 버튼 더 나은 UI 방안 찾기',
       done: false,
       important: false,
