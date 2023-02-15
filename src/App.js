@@ -19,16 +19,18 @@ function App() {
     async function getData() {
       try {
         const config = {
-          method: "GET",
-          mode: "no-cors",
+          // mode: "no-cors",
           headers: {
-            "Access-Control-Allow-Origin": "*",
-            Accept: "application/json",
-            "Content-Type": "application/json",
+            Origin: "http://localhost:3000/",
+            "Access-Control-Request-Method": "GET",
+            "Access-Control-Request-Headers": "X-PINGOTHER, Content-Type",
+            // "Access-Control-Allow-Origin": "*",
+            // Accept: "application/json",
+            // "Content-Type": "application/json",
           },
           withCredentials: true,
-          credentials: "same-origin",
-          crossdomain: true,
+          // credentials: "same-origin",
+          // crossdomain: true,
         };
 
         const res = await axios.get(`${URL}/todos`, config);
