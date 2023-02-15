@@ -73,7 +73,7 @@ export default function Todo({ todo, todos, setTodos }) {
   const [showModal, setShowModal] = useState(false);
   const { REACT_APP_SERVER_URL: URL } = process.env;
   const textareaRef = useRef(null);
-  const hiddenTextareaRef = useRef(null);
+  // const hiddenTextareaRef = useRef(null);
 
   const taskDone = () => {
     const target = todos.find((todo) => todo.id === id);
@@ -178,6 +178,7 @@ export default function Todo({ todo, todos, setTodos }) {
         <ButtonGroup>
           <img
             src={important ? `${filledStar}` : `${emptyStar}`}
+            alt="중요 여부 체크 버튼"
             onClick={handleImportant}
           ></img>
           <img src={edit} onClick={editTodo} alt="edit icon"></img>

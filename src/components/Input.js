@@ -26,7 +26,7 @@ export default function Input({ todos, setTodos, important }) {
 
   return (
     <div className={styles.container}>
-      <img src={plus}></img>
+      <img src={plus} alt="추가 아이콘"></img>
       <input
         type="text"
         placeholder="작업 추가"
