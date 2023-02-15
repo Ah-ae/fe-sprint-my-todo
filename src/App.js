@@ -7,14 +7,31 @@ import Sidebar from "./components/Sidebar";
 import Main from "./components/pages/Main";
 import Important from "./components/pages/Important";
 
+// * 모든 요청에 withCredentials가 true로 설정
+// axios.defaults.withCredentials = true;
+
 function App() {
   const { REACT_APP_SERVER_URL: URL } = process.env;
   const [todos, setTodos] = useState([]);
 
+  console.log(URL);
   useEffect(() => {
     async function getData() {
       try {
-        const res = await axios.get(`${URL}/todos`, { withCredentials: true });
+        const config = {
+          method: "GET",
+          mode: "no-cors",
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+          credentials: "same-origin",
+          crossdomain: true,
+        };
+
+        const res = await axios.get(`${URL}/todos`, config);
         setTodos([res.data]);
         console.log(res);
       } catch (error) {
